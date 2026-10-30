@@ -249,11 +249,11 @@ export const Photon: React.FC = () => {
           {/* foton UV */}
           <Packet xc={uvX} y={AY} nm={121.6} color={UV} amp={36} sig={70} op={uvOp} width={3.5} />
           <g opacity={uvOp}>
-            <Arrow x1={uvX - PB / 2} y1={AY - 84} x2={uvX + PB / 2} y2={AY - 84} color="spr" width={6} />
-            <Label x={uvX} y={AY - 112} size={24} color={C.spr} weight={600}>
+            <Arrow x1={uvX - PB / 2} y1={AY + 84} x2={uvX + PB / 2} y2={AY + 84} color="spr" width={6} />
+            <Label x={uvX} y={AY + 122} size={24} color={C.spr} weight={600}>
               p foton
             </Label>
-            <Label x={uvX} y={AY + 72} size={22} color={UV} weight={600}>
+            <Label x={uvX} y={AY - 62} size={22} color={UV} weight={600}>
               UV 121,6 nm
             </Label>
           </g>

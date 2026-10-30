@@ -338,10 +338,10 @@ export const Conservation: React.FC = () => {
                 F<TSub>21</TSub>
               </Label>
               <Label x={612} y={GY - 32} size={26} font="mono" color={C.work} weight={600} anchor="start">
-                {`J₂ = +${jNow.toFixed(1).replace('.', ',')} N·s`}
+                {`J₂ = ${jNow < 0.05 ? '' : '+'}${jNow.toFixed(1).replace('.', ',')} N·s`}
               </Label>
               <Label x={612} y={GY + 32} size={26} font="mono" color={C.work} weight={600} anchor="start">
-                {`J₁ = −${jNow.toFixed(1).replace('.', ',')} N·s`}
+                {`J₁ = ${jNow < 0.05 ? '' : '−'}${jNow.toFixed(1).replace('.', ',')} N·s`}
               </Label>
             </g>
           </g>

@@ -100,7 +100,7 @@ export const Recoil: React.FC = () => {
 
   // ===== Bagian 1: sepatu luncur =====
   const p1In = ramp(t, -0.4, 0.8);
-  const p1Out = 1 - ramp(t, cue(4) - 0.7, cue(4) + 0.1, EASE_IN_OUT);
+  const p1Out = 1 - ramp(t, cue(4) - 0.6, cue(4) + 0.2, EASE_IN_OUT);
   const tp = wordOf(1, 'mendorong');
   const tau = t - tp;
   const I = disp(tau, TP);
@@ -120,7 +120,7 @@ export const Recoil: React.FC = () => {
   const k3 = slot(t, cue(3) + 0.1, cue(4) - 0.3);
 
   // ===== Bagian 2: senapan =====
-  const p2In = ramp(t, cue(4) - 0.1, cue(4) + 0.6);
+  const p2In = ramp(t, cue(4) - 0.4, cue(4) + 0.4);
   const XR = 700;
   const YR = 540;
   const MUZ = 232;
