@@ -1,0 +1,117 @@
+hook-00	Tarik satu bola baja di ujung ayunan Nyuton, lalu lepaskan.
+hook-01	Bola itu berhenti, tetapi bola di ujung seberang langsung terlempar, seolah sesuatu berpindah menembus bola-bola di tengah.
+hook-02	Dua pemain sepatu luncur saling mendorong. Keduanya meluncur menjauh, padahal sebelumnya sama-sama diam.
+hook-03	Dan sebuah roket melaju di ruang hampa, tempat tidak ada apa pun untuk didorong.
+hook-04	Ketiganya diatur oleh satu besaran yang tidak pernah hilang:
+hook-05	momentum.
+hook-06	Momentum hanya bisa berpindah dari satu benda ke benda lain, tetapi jumlah totalnya selalu tetap.
+roadmap-00	Video ini membahas momentum dan impuls dalam tiga bagian.
+roadmap-01	Bagian pertama, konsep dan cara berpikir: momentum, impuls, kekekalan momentum, jenis-jenis tumbukan, dan koefisien restitusi.
+roadmap-02	Bagian kedua, momentum di dunia kimia: tekanan gas, teori tumbukan, dan momentum cahaya.
+roadmap-03	Bagian ketiga, penerapan: keselamatan berkendara, bandul balistik, dan roket.
+momentum-00	Mana yang lebih sulit dihentikan: truk yang merayap pelan, atau sebutir peluru yang melesat?
+momentum-01	Jawabannya bergantung pada momentum, yaitu massa kali kecepatan: pe sama dengan em fe.
+momentum-02	Satuannya kilogram meter per detik. Dan karena kecepatan punya arah, momentum juga punya arah: ia besaran vektor.
+momentum-03	Truk dua ribu kilogram yang bergerak satu meter per detik bermomentum dua ribu kilogram meter per detik.
+momentum-04	Peluru sepuluh gram yang melesat empat ratus meter per detik hanya bermomentum empat kilogram meter per detik.
+momentum-05	Truk yang pelan itu membawa momentum lima ratus kali lebih besar.
+impulse-00	Bagaimana cara mengubah momentum sebuah benda? Dengan memberinya gaya selama selang waktu tertentu.
+impulse-01	Gaya kali selang waktu disebut impuls, dan impuls sama dengan perubahan momentum.
+impulse-02	Ini sebenarnya hukum kedua Nyuton yang ditulis ulang: ef kali delta te sama dengan delta pe.
+impulse-03	Pada grafik gaya terhadap waktu, impuls adalah luas daerah di bawah kurva.
+impulse-04	Bola nol koma empat kilogram datang sepuluh meter per detik dan ditendang balik lima belas meter per detik.
+impulse-05	Perubahan momentumnya nol koma empat kali dua puluh lima, yaitu sepuluh newton sekon. Arah balik ikut dihitung.
+impulse-06	Bila kaki menyentuh bola selama nol koma nol dua detik, gaya rata-ratanya lima ratus newton.
+cushion-00	Impuls menyimpan rahasia keselamatan.
+cushion-01	Untuk menghentikan sebuah benda, perubahan momentumnya sudah pasti. Yang bisa kita pilih hanyalah lamanya waktu.
+cushion-02	Seorang penumpang enam puluh kilogram melaju sepuluh meter per detik, lalu berhenti mendadak.
+cushion-03	Bila berhenti dalam seperseratus detik karena membentur dasbor, gayanya enam puluh ribu newton.
+cushion-04	Bila sabuk pengaman dan kantong udara memperlama penghentian menjadi nol koma dua detik, gayanya tinggal tiga ribu newton.
+cushion-05	Perubahan momentum sama, tetapi gayanya dua puluh kali lebih kecil.
+cushion-06	Itulah sebabnya kita menekuk lutut saat mendarat, dan menarik tangan ke belakang saat menangkap telur.
+conservation-00	Sekarang dua benda bertumbukan.
+conservation-01	Menurut hukum ketiga Nyuton, gaya yang dikerjakan benda pertama pada benda kedua sama besar dan berlawanan arah dengan gaya sebaliknya.
+conservation-02	Kedua gaya itu bekerja selama waktu yang sama, jadi impulsnya juga sama besar dan berlawanan.
+conservation-03	Momentum yang hilang dari satu benda tepat sama dengan momentum yang diterima benda lain.
+conservation-04	Selama tidak ada gaya luar, momentum total sistem tidak berubah. Inilah hukum kekekalan momentum.
+conservation-05	Hukum ini berlaku untuk tabrakan mobil, ledakan, molekul gas, bahkan partikel subatom.
+recoil-00	Dua pemain sepatu luncur tadi mula-mula diam, jadi momentum totalnya nol.
+recoil-01	Setelah saling mendorong, momentum totalnya harus tetap nol: momentum mereka sama besar, berlawanan arah.
+recoil-02	Pemain lima puluh kilogram meluncur satu koma lima meter per detik, pemain tujuh puluh lima kilogram meluncur satu meter per detik.
+recoil-03	Yang lebih ringan bergerak lebih cepat.
+recoil-04	Hal yang sama terjadi saat senapan ditembakkan. Peluru sepuluh gram melesat empat ratus meter per detik ke depan,
+recoil-05	maka senapan empat kilogram tertolak ke belakang dengan kecepatan satu meter per detik. Inilah tolakan atau rikoil.
+collisions-00	Dalam setiap tumbukan tanpa gaya luar, momentum selalu kekal. Tetapi energi kinetik belum tentu.
+collisions-01	Pada tumbukan lenting sempurna, energi kinetik juga kekal. Benda memantul tanpa kehilangan energi.
+collisions-02	Pada tumbukan lenting sebagian, sebagian energi kinetik berubah menjadi panas, bunyi, dan perubahan bentuk.
+collisions-03	Pada tumbukan tidak lenting sama sekali, kedua benda menempel dan bergerak bersama.
+collisions-04	Ingat video pertama seri ini: energi tidak hilang, hanya berpindah bentuk.
+inelastic-00	Sebuah gerbong sepuluh ton melaju dua meter per detik dan menabrak gerbong sepuluh ton yang diam. Keduanya tersambung.
+inelastic-01	Momentum sebelum tumbukan dua puluh ribu kilogram meter per detik. Setelahnya, massa dua puluh ton membawa momentum yang sama,
+inelastic-02	jadi keduanya bergerak satu meter per detik.
+inelastic-03	Energi kinetik sebelum tumbukan dua puluh kilojul, setelahnya hanya sepuluh kilojul.
+inelastic-04	Separuh energinya berubah menjadi bunyi dentuman, panas, dan getaran sambungan. Momentum kekal, energi kinetik tidak.
+elastic-00	Kembali ke ayunan Nyuton. Bola-bola baja hampir lenting sempurna.
+elastic-01	Pada tumbukan lenting sempurna antara dua benda bermassa sama, keduanya bertukar kecepatan.
+elastic-02	Bola yang datang berhenti total, dan bola yang diam melaju dengan kecepatan bola pertama.
+elastic-03	Itulah sebabnya hanya satu bola yang terlempar. Dua bola keluar dengan kecepatan separuh memang kekal momentumnya, tetapi energi kinetiknya tidak.
+elastic-04	Hanya satu jawaban yang memenuhi kedua hukum sekaligus.
+elastic-05	Bola biliar yang ditembak lurus ke bola lain juga berhenti di tempat, sementara bola sasaran melaju.
+restitution-00	Seberapa lenting sebuah tumbukan? Ukurannya adalah koefisien restitusi, e.
+restitution-01	Koefisien ini adalah perbandingan kecepatan relatif sesudah tumbukan terhadap kecepatan relatif sebelum tumbukan.
+restitution-02	Nilai e sama dengan satu berarti lenting sempurna. Nilai nol berarti benda menempel.
+restitution-03	Cara mudah mengukurnya: jatuhkan bola ke lantai. Untuk bola yang memantul, e sama dengan akar tinggi pantulan dibagi tinggi jatuh.
+restitution-04	Bola dijatuhkan dari satu meter dan memantul enam puluh empat sentimeter. Koefisien restitusinya akar nol koma enam empat, yaitu nol koma delapan.
+restitution-05	Pantulan berikutnya hanya setinggi empat puluh satu sentimeter, karena setiap pantulan mengalikan tingginya dengan nol koma enam empat.
+twod-00	Momentum adalah vektor, jadi kekekalannya berlaku ke setiap arah sekaligus.
+twod-01	Bola biliar menyerempet bola lain yang diam. Kedua bola terpental ke arah yang berbeda.
+twod-02	Momentum mendatar total tetap, dan momentum tegak total tetap nol.
+twod-03	Jumlahkan kedua panah momentum sesudah tumbukan seperti menyambung anak panah: hasilnya tepat sama dengan panah momentum semula.
+twod-04	Untuk dua bola bermassa sama yang bertumbukan lenting, kedua bola selalu berpisah membentuk sudut siku-siku.
+strategy-00	Bagaimana menaklukkan soal momentum? Gunakan urutan berpikir ini.
+strategy-01	Pertama, tentukan sistemnya, dan pastikan tidak ada gaya luar yang berarti selama tumbukan.
+strategy-02	Kedua, pilih arah positif. Kecepatan yang berlawanan arah diberi tanda negatif.
+strategy-03	Ketiga, tulis momentum total sebelum sama dengan momentum total sesudah.
+strategy-04	Keempat, bila tumbukannya lenting atau koefisien restitusinya diketahui, tambahkan persamaan kedua.
+strategy-05	Kelima, periksa energi kinetik: energi boleh berkurang, tetapi tidak boleh bertambah tanpa sumber energi lain.
+gaspressure-00	Mengapa gas di dalam tabung menekan dindingnya?
+gaspressure-01	Karena molekul-molekul gas terus menabrak dinding dan memantul.
+gaspressure-02	Setiap pantulan membalik arah molekul, jadi perubahan momentumnya dua kali em fe.
+gaspressure-03	Sebuah molekul nitrogen pada suhu kamar bergerak sekitar lima ratus meter per detik. Setiap pantulannya mengubah momentum sekitar lima kali sepuluh pangkat minus dua puluh tiga kilogram meter per detik.
+gaspressure-04	Sangat kecil. Tetapi setiap sentimeter persegi dinding ditabrak triliunan triliun kali setiap detik.
+gaspressure-05	Jumlah impuls yang sangat banyak itu, dibagi waktu dan luas, kita rasakan sebagai tekanan gas.
+collisiontheory-00	Reaksi kimia di dalam gas atau larutan juga dimulai dari tumbukan antarmolekul.
+collisiontheory-01	Tidak semua tumbukan menghasilkan reaksi. Tumbukan harus cukup keras dan arahnya harus tepat.
+collisiontheory-02	Energi tumbukan harus melampaui energi aktivasi, sehingga ikatan lama bisa putus.
+collisiontheory-03	Dalam setiap tumbukan antarmolekul, momentum total tetap kekal, walaupun ikatan putus dan terbentuk.
+collisiontheory-04	Menaikkan suhu membuat molekul bergerak lebih cepat, sehingga tumbukan lebih sering dan lebih keras.
+collisiontheory-05	Banyak reaksi menjadi kira-kira dua kali lebih cepat untuk setiap kenaikan suhu sepuluh derajat.
+photon-00	Cahaya tidak bermassa, tetapi cahaya membawa momentum.
+photon-01	Momentum sebuah foton sama dengan tetapan Plank dibagi panjang gelombangnya: pe sama dengan ha per lambda.
+photon-02	Foton hijau lima ratus nanometer membawa momentum sekitar satu koma tiga kali sepuluh pangkat minus dua puluh tujuh kilogram meter per detik.
+photon-03	Saat atom hidrogen memancarkan foton ultraviolet, atom itu tertolak ke arah berlawanan, seperti senapan yang menembak.
+photon-04	Kecepatan tolakannya sekitar tiga meter per detik. Kecil, tetapi nyata dan terukur.
+photon-05	Prinsip ini dipakai untuk mendinginkan atom dengan laser, dan untuk mendorong layar surya di antariksa.
+crash-00	Mobil modern sengaja dibuat mudah penyok di bagian depan. Bagian ini disebut zona remuk.
+crash-01	Zona remuk memperpanjang waktu tumbukan, sehingga gaya pada kabin penumpang lebih kecil.
+crash-02	Mobil yang terlalu kaku justru berbahaya: penghentiannya terlalu singkat, gayanya terlalu besar.
+crash-03	Sabuk pengaman menahan tubuh agar ikut melambat bersama mobil, dan kantong udara memperluas bidang tekan serta memperlama penghentian kepala.
+crash-04	Helm bekerja dengan cara yang sama: busa di dalamnya remuk perlahan untuk memperlama tumbukan.
+ballistic-00	Bagaimana mengukur kecepatan peluru tanpa alat elektronik? Gunakan bandul balistik.
+ballistic-01	Peluru sepuluh gram ditembakkan ke balok kayu dua kilogram yang tergantung, lalu tertanam di dalamnya.
+ballistic-02	Balok dan peluru berayun naik setinggi lima sentimeter.
+ballistic-03	Tahap kedua memakai kekekalan energi: kecepatan balok sesaat setelah tumbukan adalah akar dua ge ha, yaitu satu meter per detik.
+ballistic-04	Tahap pertama memakai kekekalan momentum: kecepatan peluru sama dengan massa total dibagi massa peluru, dikali satu meter per detik.
+ballistic-05	Hasilnya dua ratus satu meter per detik. Dua hukum kekekalan, dipakai berurutan.
+rocket-00	Kembali ke roket di ruang hampa.
+rocket-01	Roket tidak mendorong udara. Roket mendorong gas buangnya sendiri ke belakang dengan sangat cepat.
+rocket-02	Gas mendapat momentum ke belakang, maka roket mendapat momentum yang sama besar ke depan.
+rocket-03	Gaya dorongnya sama dengan kecepatan gas buang dikali massa gas yang dibuang setiap detik.
+rocket-04	Gas buang tiga ribu meter per detik, dibuang seratus kilogram setiap detik, menghasilkan dorongan tiga ratus ribu newton.
+rocket-05	Makin banyak bahan bakar terbakar, roket makin ringan, sehingga percepatannya terus bertambah.
+recap-00	Mari rangkum.
+recap-01	Momentum adalah massa kali kecepatan, besaran vektor yang menunjukkan seberapa sulit sebuah benda dihentikan.
+recap-02	Impuls, yaitu gaya kali selang waktu, sama dengan perubahan momentum. Memperlama tumbukan memperkecil gaya.
+recap-03	Tanpa gaya luar, momentum total selalu kekal, pada tumbukan apa pun. Energi kinetik kekal hanya pada tumbukan lenting sempurna.
+recap-04	Dari tekanan gas sampai roket dan foton, momentum hanya berpindah, tidak pernah hilang.
+recap-05	Jadi, setiap kali melihat benda bertumbukan, tanyakan: ke mana momentumnya berpindah, dan ke mana energinya pergi?
