@@ -383,7 +383,7 @@ export const Impulse: React.FC = () => {
                 </Label>
               </g>
               {/* gaya kaki pada bola selama kontak */}
-              <Arrow x1={XC - BR - 30} y1={BCY - 2} x2={XC - BR + 150} y2={BCY - 2} color="force" width={10} opacity={contact} pulse={false} />
+              <Arrow x1={ball.x + BR + 6} y1={BCY - 2} x2={ball.x + BR + 150} y2={BCY - 2} color="force" width={10} opacity={contact} pulse={false} />
               <Ripple x={XC - BR} y={BCY} p={s / 0.9} r={130} color="force" rings={3} />
             </g>
 

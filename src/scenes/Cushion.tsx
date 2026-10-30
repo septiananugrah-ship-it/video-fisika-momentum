@@ -107,8 +107,8 @@ const Cabin: React.FC<{x: number; y: number; t: number; tc: number; belt: boolea
           </g>
         ) : null}
         {/* dasbor */}
-        <path d={`M${dashX},96 L790,96 L790,268 L${dashX + 70},268 L${dashX + 46},160 L${dashX},150 Z`} fill="#232f5a" stroke="#6d7bb0" strokeWidth={3} strokeLinejoin="round" />
-        <rect x={dashX + 30} y={110} width={60} height={12} rx={6} fill={C.cyan} opacity={0.35} />
+        <path d={`M${dashX},${130} Q${dashX + 6},112 ${dashX + 40},112 L790,112 L790,268 L${dashX + 70},268 L${dashX + 46},184 L${dashX},172 Z`} fill="#232f5a" stroke="#6d7bb0" strokeWidth={3} strokeLinejoin="round" />
+        <rect x={dashX + 60} y={124} width={60} height={10} rx={5} fill={C.cyan} opacity={0.35} />
         {/* kantong udara */}
         {bag > 0.01 ? (
           <ellipse cx={(bagFront + dashX) / 2} cy={118} rx={Math.max(4, (dashX - bagFront) / 2)} ry={14 + 44 * bag} fill="#e8ecf8" opacity={0.92} stroke="#aab4d4" strokeWidth={2} />
@@ -168,7 +168,7 @@ const jumper = (s: number) => {
 };
 
 const EX0 = 1080;
-const EY0 = 470;
+const EY0 = 560;
 const EVX = 400;
 const EVY = -420;
 const EG = 900;
@@ -264,8 +264,12 @@ export const Cushion: React.FC = () => {
   const egg = eggAt(sE);
   const handRest: [number, number] = [EX0 + EVX * ETC, EY0 + EVY * ETC + 0.5 * EG * ETC * ETC];
   const hand: [number, number] = egg.caught ? [egg.x, egg.y] : [handRest[0] + 6 * Math.sin(t * 2), handRest[1] + 4 * Math.sin(t * 1.7)];
-  const shoulder: [number, number] = [1700, 430];
-  const elbow = legIK(shoulder[0], shoulder[1], hand[0] + 26, hand[1] + 6, 120, -1);
+  const shoulder: [number, number] = [1700, 500];
+  const elbow = (() => {
+    const a = legIK(shoulder[0], shoulder[1], hand[0] + 26, hand[1] + 6, 125, -1);
+    const b = legIK(shoulder[0], shoulder[1], hand[0] + 26, hand[1] + 6, 125, 1);
+    return a[1] > b[1] ? a : b; // siku di bawah
+  })();
   const lTitle = ramp(t, cue(6) + 0.3, cue(6) + 1.0);
 
   return (
@@ -395,10 +399,10 @@ export const Cushion: React.FC = () => {
               <Ripple x={JX} y={JG} p={landP / 0.9} r={140} color="work" rings={2} />
               {/* gaya pada lutut: rendah tapi lama */}
               <Arrow x1={JX + 90} y1={JG - 10} x2={JX + 90} y2={JG - 10 - (landP > 0 && landP < TB ? 60 : 0)} color="force" width={8} pulse={false} opacity={landP > 0 && landP < TB ? 1 : 0} />
-              <Label x={JX} y={300} size={32} color={C.ink} weight={600} opacity={lTitle}>
+              <Label x={JX} y={280} size={32} color={C.ink} weight={600} opacity={lTitle}>
                 menekuk lutut
               </Label>
-              <Label x={JX} y={344} size={24} color={C.muted} font="mono" opacity={lTitle}>
+              <Label x={JX} y={318} size={24} color={C.muted} font="mono" opacity={lTitle}>
                 pinggul diperlambat lebih lama
               </Label>
             </g>
@@ -432,10 +436,10 @@ export const Cushion: React.FC = () => {
                 <circle cx={egg.x - 5} cy={egg.y - 14} r={4} fill="#fff" opacity={0.8} />
                 <Arrow x1={hand[0] + 50} y1={hand[1] - 30} x2={hand[0] + 50 + (egg.caught && sE - ETC < ETB ? 60 : 0)} y2={hand[1] - 30 + (egg.caught && sE - ETC < ETB ? 72 : 0)} color="cyan" width={6} pulse={false} opacity={egg.caught && sE - ETC < ETB ? 1 : 0} />
               </g>
-              <Label x={1400} y={300} size={32} color={C.ink} weight={600} opacity={eIn}>
+              <Label x={1400} y={280} size={32} color={C.ink} weight={600} opacity={eIn}>
                 menarik tangan ke belakang
               </Label>
-              <Label x={1400} y={344} size={24} color={C.muted} font="mono" opacity={eIn}>
+              <Label x={1400} y={318} size={24} color={C.muted} font="mono" opacity={eIn}>
                 telur diperlambat lebih lama
               </Label>
             </g>

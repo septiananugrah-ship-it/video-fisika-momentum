@@ -135,7 +135,7 @@ const Icon: React.FC<{i: number; x: number; y: number; t: number; act: number}> 
   const rx = x;
   const ry = y + 10 + 6 * Math.sin(t * 1.1);
   const V = 120; // laju roket (px/s, dalam kerangka bintang)
-  const U = 260; // laju gas relatif
+  const U = 160; // laju gas relatif
   return (
     <g>
       <Glow x={x} y={y} r={170} color="work" opacity={0.25 + 0.3 * act} />
@@ -147,7 +147,7 @@ const Icon: React.FC<{i: number; x: number; y: number; t: number; act: number}> 
       {Array.from({length: 14}, (_, k) => {
         const emit = Math.floor(t / 0.07) * 0.07 - k * 0.07;
         const age = t - emit;
-        const life = age / 0.9;
+        const life = age / 0.38;
         if (life >= 1 || life < 0) return null;
         const spread = (rand(Math.round(emit / 0.07) * 1.3) - 0.5) * 60;
         // kamera ikut roket: gas bergerak ke bawah dengan laju U relatif roket
@@ -164,7 +164,7 @@ const Icon: React.FC<{i: number; x: number; y: number; t: number; act: number}> 
         <circle cx={0} cy={-10} r={7} fill="#16224a" stroke={C.cyan} strokeWidth={2.5} />
       </g>
       <Arrow x1={rx + 52} y1={ry + 20} x2={rx + 52} y2={ry - 60} color="spr" width={6} pulse={false} />
-      <Arrow x1={rx - 52} y1={ry + 40} x2={rx - 52} y2={ry + 120} color="spr" width={6} pulse={false} opacity={0.8} />
+      <Arrow x1={rx - 52} y1={ry + 20} x2={rx - 52} y2={ry + 80} color="spr" width={6} pulse={false} opacity={0.8} />
     </g>
   );
 };
