@@ -1,7 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile} from 'remotion';
 import {EASE_IN_OUT, cyc, ramp, rand} from '../anim';
-import {Pipe, Streamline} from '../components/flow';
 import {Glow, Motes, Spark, Stage, Twinkles} from '../components/primitives';
 import {BRAND} from '../brand';
 import {useScene} from '../SceneContext';
@@ -16,14 +15,14 @@ const REFS = [
   'Modul Fisika Umum: Momentum & Impuls',
 ];
 
-// butir yang mengorbit logo (warna = kode warna fluida)
+// butir yang mengorbit logo (warna = kode warna momentum: p, v, F, J, K, panas)
 const ORBIT: {hue: Hue; ph: number}[] = [
-  {hue: 'water', ph: 0},
-  {hue: 'press', ph: 1.05},
-  {hue: 'kin', ph: 2.09},
-  {hue: 'force', ph: 3.14},
-  {hue: 'spr', ph: 4.19},
-  {hue: 'cyan', ph: 5.24},
+  {hue: 'spr', ph: 0},
+  {hue: 'cyan', ph: 1.05},
+  {hue: 'force', ph: 2.09},
+  {hue: 'work', ph: 3.14},
+  {hue: 'kin', ph: 4.19},
+  {hue: 'heat', ph: 5.24},
 ];
 const OC = {x: 960, y: 188, rx: 190, ry: 48, tilt: -14, sp: 0.5};
 
@@ -35,52 +34,65 @@ const orbitPt = (a: number): [number, number] => {
   return [OC.x + ex * c - ey * s, OC.y + ex * s + ey * c];
 };
 
-/** Motif venturi kecil: pipa menyempit dengan partikel (kontinuitas), kolom tekanan lebih rendah di bagian sempit, garis arus. */
-const VenturiMotif: React.FC<{x: number; y: number; t: number; seed: number; opacity: number; flip?: boolean}> = ({x, y, t, seed, opacity, flip}) => {
+/** Ayunan Newton kecil: n bola di ujung terayun, momentum (panah ungu) "menembus" bola tengah ke ujung seberang. */
+const Cradle: React.FC<{x: number; y: number; t: number; out: number; phase: number; opacity: number}> = ({x, y, t, out, phase, opacity}) => {
   if (opacity <= 0.001) return null;
-  const w = 240;
-  const yc = y - 40;
-  const knots: [number, number][] = [
-    [x, 26],
-    [x + 70, 26],
-    [x + 110, 11],
-    [x + 150, 11],
-    [x + 200, 26],
-    [x + w, 26],
-  ];
-  const wob = 3 * Math.sin(t * 1.7 + seed);
-  const cols = [
-    {cx: x + 40, h: 92 + wob},
-    {cx: x + 130, h: 38 + wob * 0.6},
-    {cx: x + 220, h: 86 + wob},
-  ];
+  const N = 5;
+  const R = 17;
+  const L = 120;
+  const top = y - 196;
+  const th0 = 0.5;
+  const w = (2 * Math.PI) / 1.9;
+  const s = Math.sin(w * t + phase);
+  const c = Math.cos(w * t + phase);
+  const A = th0 * s;
+  const cx0 = x + 120 - ((N - 1) * R * 2) / 2;
+  const balls = Array.from({length: N}, (_, i) => {
+    const a = i < out ? Math.min(0, A) : i >= N - out ? Math.max(0, A) : 0;
+    const px = cx0 + i * 2 * R;
+    return {px, a, bx: px + L * Math.sin(a), by: top + L * Math.cos(a)};
+  });
+  // panah momentum bersilang-pudar di sekitar tumbukan (|A| kecil) — momentum berpindah lewat bola tengah
+  const kR = Math.max(0, Math.min(1, 0.5 + A / (0.7 * th0)));
+  const vLen = 46 * Math.abs(c);
+  const dir = Math.sign(c) || 1;
+  const hit = Math.exp(-((A / (0.12 * th0)) ** 2));
+  const grp = (right: boolean) => {
+    const idx = right ? N - 1 - (out - 1) / 2 : (out - 1) / 2;
+    const lo = Math.floor(idx);
+    const hi = Math.ceil(idx);
+    const b = {bx: (balls[lo].bx + balls[hi].bx) / 2, by: (balls[lo].by + balls[hi].by) / 2};
+    return b;
+  };
+  const gl = grp(false);
+  const gr = grp(true);
   return (
-    <g opacity={opacity} transform={flip ? `translate(${2 * x + w} 0) scale(-1 1)` : undefined}>
-      <Glow x={x + 130} y={yc} r={150} color="water" opacity={0.5} />
-      {/* garis arus di atas & bawah pipa */}
-      {[-70, 60].map((dy, i) => (
-        <Streamline
-          key={dy}
-          pts={Array.from({length: 13}, (_, k) => [x - 30 + (k * (w + 60)) / 12, yc + dy - Math.sign(dy) * 10 * Math.exp(-(((k - 6) / 2.5) ** 2))] as [number, number])}
-          speed={70}
-          n={4}
-          color={i ? C.cyan : '#cfeaff'}
-          line={0.15}
-          seed={seed + i}
-        />
-      ))}
-      {cols.map((c) => (
-        <g key={c.cx}>
-          <rect x={c.cx - 6} y={yc - 26 - 104} width={12} height={104} fill="#0d1838" stroke="#bfe3ff" strokeOpacity={0.6} strokeWidth={2} />
-          <rect x={c.cx - 4} y={yc - 26 - c.h} width={8} height={c.h} fill={C.press} opacity={0.75} />
+    <g opacity={opacity}>
+      <Glow x={x + 120} y={y - 90} r={150} color="spr" opacity={0.45} />
+      <line x1={x + 4} y1={y} x2={x + 26} y2={top - 6} stroke="#5b6a9e" strokeWidth={5} strokeLinecap="round" />
+      <line x1={x + 236} y1={y} x2={x + 214} y2={top - 6} stroke="#5b6a9e" strokeWidth={5} strokeLinecap="round" />
+      <rect x={x + 16} y={top - 10} width={208} height={9} rx={4} fill="#8fa0d0" />
+      <rect x={x - 6} y={y - 4} width={252} height={10} rx={4} fill="#26305a" stroke="#5b6a9e" strokeWidth={2} />
+      {balls.map((b, i) => (
+        <g key={i}>
+          <line x1={b.px} y1={top} x2={b.bx} y2={b.by} stroke="#c9d2ee" strokeWidth={1.5} opacity={0.8} />
+          <ellipse cx={b.bx} cy={y - 8} rx={R * 0.9} ry={3} fill="#000" opacity={0.3} />
+          <circle cx={b.bx} cy={b.by} r={R} fill="url(#ball)" stroke="#dfe6fb" strokeOpacity={0.6} strokeWidth={1.5} />
+          <circle cx={b.bx - R * 0.35} cy={b.by - R * 0.38} r={R * 0.24} fill="#fff" opacity={0.6} />
+          {i >= out && i < N - out ? <circle cx={b.bx} cy={b.by} r={R * 1.5} fill="url(#soft-spr)" opacity={hit} /> : null}
         </g>
       ))}
-      <Pipe x0={x} x1={x + w} yc={yc} knots={knots} v0={55} lanes={3} perLane={5} lines={0.35} seed={seed} />
+      {vLen > 3 ? (
+        <>
+          <line x1={gl.bx} y1={gl.by - R - 16} x2={gl.bx + dir * vLen} y2={gl.by - R - 16} stroke={C.spr} strokeWidth={4} strokeLinecap="round" markerEnd="url(#arrow-spr)" opacity={1 - kR} />
+          <line x1={gr.bx} y1={gr.by - R - 16} x2={gr.bx + dir * vLen} y2={gr.by - R - 16} stroke={C.spr} strokeWidth={4} strokeLinecap="round" markerEnd="url(#arrow-spr)" opacity={kR} />
+        </>
+      ) : null}
     </g>
   );
 };
 
-/** Penutup: logo SCIENTIAN, tagline, nama penyusun, rujukan, dan seri berikutnya (motif aliran). */
+/** Penutup: logo SCIENTIAN, tagline, nama penyusun, rujukan, dan pil penutup seri (motif tumbukan). */
 export const Outro: React.FC = () => {
   const {t, dur} = useScene();
   const logo = ramp(t, 0.2, 1.6);
@@ -111,27 +123,27 @@ export const Outro: React.FC = () => {
     <AbsoluteFill style={{opacity: out}}>
       <Stage>
         <Glow x={960} y={240} r={440} color="cyan" opacity={0.35 * logo} />
-        <Glow x={960} y={188} r={200} color="water" opacity={0.3 * logo} />
+        <Glow x={960} y={188} r={200} color="spr" opacity={0.3 * logo} />
         <Motes x={960} y={300} rx={620} ry={260} n={40} color="cyan" opacity={0.45 * logo} seed={13} />
-        {/* butir aliran yang hanyut pelan mengikuti garis arus bergelombang */}
+        {/* butir yang hanyut pelan (jejak gerak lurus beraturan) */}
         {Array.from({length: 24}, (_, k) => {
           const p = ((((t + rand(k * 3.1) * 14) / (10 + 5 * rand(k))) % 1) + 1) % 1;
           const x = -40 + p * 2000;
           const base = 140 + rand(k * 5.3) * 780;
-          const y = base + 26 * Math.sin(x * 0.004 + k);
+          const y = base;
           const tail = 18 + 20 * rand(k * 1.7);
-          const yb = base + 26 * Math.sin((x - tail) * 0.004 + k);
+          const yb = base;
           return (
             <g key={k} opacity={cyc(p) * 0.4 * logo}>
-              <line x1={x - tail} y1={yb} x2={x} y2={y} stroke="#cfeaff" strokeWidth={2} strokeLinecap="round" opacity={0.6} />
+              <line x1={x - tail} y1={yb} x2={x} y2={y} stroke="#e6d4ff" strokeWidth={2} strokeLinecap="round" opacity={0.6} />
               <circle cx={x} cy={y} r={2.4} fill="#fff" />
             </g>
           );
         })}
         <path d={ellipseD} fill="none" stroke={C.cyan} strokeOpacity={0.18 * orbitOn} strokeWidth={1.5} strokeDasharray="4 10" strokeDashoffset={-t * 14} />
         {ring(false)}
-        <VenturiMotif x={110} y={860} t={t} seed={0.4} opacity={0.55 * motif} />
-        <VenturiMotif x={1570} y={860} t={t} seed={2.3} opacity={0.55 * motif} flip />
+        <Cradle x={110} y={860} t={t} out={1} phase={0} opacity={0.8 * motif} />
+        <Cradle x={1570} y={860} t={t} out={2} phase={1.6} opacity={0.8 * motif} />
         <Twinkles x={960} y={530} rx={360} ry={30} n={4} color="gold" opacity={by * 0.7} seed={17} />
       </Stage>
       <AbsoluteFill style={{alignItems: 'center', paddingTop: 70}}>
@@ -175,13 +187,13 @@ export const Outro: React.FC = () => {
             opacity: next,
             padding: '10px 28px',
             borderRadius: 999,
-            border: `2px solid ${C.water}`,
+            border: `2px solid ${C.spr}`,
             background: 'rgba(10,16,36,0.85)',
-            boxShadow: `0 0 ${16 + 12 * (0.5 + 0.5 * Math.sin(t * 2))}px ${C.water}66`,
+            boxShadow: `0 0 ${16 + 12 * (0.5 + 0.5 * Math.sin(t * 2))}px ${C.spr}66`,
             translate: `0px ${(1 - next) * 14}px`,
           }}
         >
-          <span style={{color: C.water}}>{BRAND.next}</span>
+          <span style={{color: C.ink}}>{BRAND.next}</span>
         </div>
       </AbsoluteFill>
       <svg width={1920} height={1080} viewBox="0 0 1920 1080" style={{position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'visible'}}>
