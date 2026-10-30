@@ -358,6 +358,7 @@ export const Recoil: React.FC = () => {
                 <line key={i} x1={bx - 24 - i * 22} y1={muzY - 6 + (i % 3) * 6} x2={bx - 40 - i * 22} y2={muzY - 6 + (i % 3) * 6} stroke={C.gold} strokeOpacity={0.5 - i * 0.07} strokeWidth={2} />
               ))}
               <path d={`M${bx - 18},${muzY - 5} L${bx + 4},${muzY - 5} Q${bx + 14},${muzY} ${bx + 4},${muzY + 5} L${bx - 18},${muzY + 5} Z`} fill="#e8b45a" stroke="#fff4c8" strokeWidth={1.5} />
+              <g opacity={1 - ramp(bx, TGT - 420, TGT - 260)}>
               <Arrow x1={bx} y1={muzY - 56} x2={bx + 4 * PK2} y2={muzY - 56} color="spr" width={7} />
               <Arrow x1={bx} y1={muzY + 44} x2={bx + 200} y2={muzY + 44} color="cyan" width={5} />
               <Label x={bx + 210} y={muzY + 44} size={22} font="mono" color={C.cyan} weight={600} anchor="start">
@@ -366,6 +367,7 @@ export const Recoil: React.FC = () => {
               <Label x={bx + 2 * PK2} y={muzY - 90} size={22} font="mono" color={C.spr} weight={600}>
                 peluru 10 g
               </Label>
+              </g>
             </g>
           ) : null}
           {/* panah momentum senapan (sama panjang) */}

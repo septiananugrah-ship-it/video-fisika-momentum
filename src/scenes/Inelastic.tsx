@@ -194,14 +194,14 @@ export const Inelastic: React.FC = () => {
 
             {/* panah kecepatan */}
             <g opacity={vArr}>
-              <Arrow x1={xa} y1={418} x2={xa + vA * PV} y2={418} color="cyan" width={6} pulse={false} />
-              <Label x={xa + vA * PV + 14} y={418} size={24} font="mono" color={C.cyan} weight={600} anchor="start">
+              <Arrow x1={xa - 80} y1={418} x2={xa - 80 + vA * PV} y2={418} color="cyan" width={6} pulse={false} />
+              <Label x={xa - 80 + vA * PV + 14} y={418} size={24} font="mono" color={C.cyan} weight={600} anchor="start">
                 {`${vA} m/s`}
               </Label>
               {vB > 0 ? (
                 <g opacity={ramp(t, tc, tc + 0.3)}>
-                  <Arrow x1={xb} y1={418} x2={xb + vB * PV} y2={418} color="cyan" width={6} pulse={false} />
-                  <Label x={xb + vB * PV + 14} y={418} size={24} font="mono" color={C.cyan} weight={600} anchor="start">
+                  <Arrow x1={xb - 80} y1={418} x2={xb - 80 + vB * PV} y2={418} color="cyan" width={6} pulse={false} />
+                  <Label x={xb - 80 + vB * PV + 14} y={418} size={24} font="mono" color={C.cyan} weight={600} anchor="start">
                     1 m/s
                   </Label>
                 </g>

@@ -23,7 +23,7 @@ const WB = 130;
 const HB = 84;
 const XB = 780;
 const XAC = XB - WB / 2 - WA / 2;
-const P = 4.6;
+const P = 4.2;
 const TCL = 1.3;
 const BAR = 300;
 const BX = 1404;
@@ -110,8 +110,8 @@ export const Collisions: React.FC = () => {
                 {/* rel */}
                 <Glow x={700} y={y - 40} r={420} color={i === 0 ? 'cyan' : i === 1 ? 'gold' : 'press'} opacity={0.12 * hi} />
                 <rect x={130} y={y} width={1160} height={12} rx={4} fill="#1a2752" stroke={C.muted} strokeOpacity={0.5} strokeWidth={1.5} />
-                <circle cx={150} cy={y - 34} r={16} fill="none" stroke={L.dot} strokeWidth={2.5} />
-                <Label x={150} y={y - 34} size={20} font="mono" color={L.dot} weight={600}>
+                <circle cx={112} cy={y - 34} r={16} fill="none" stroke={L.dot} strokeWidth={2.5} />
+                <Label x={112} y={y - 34} size={20} font="mono" color={L.dot} weight={600}>
                   {String(i + 1)}
                 </Label>
                 <g opacity={env}>
@@ -188,7 +188,7 @@ export const Collisions: React.FC = () => {
                   {L.eTxt}
                 </Label>
                 <Label x={1352} y={y - 100} size={22} font="mono" weight={600} color={C.spr} anchor="start" opacity={pChip}>
-                  {'Σp: 4 → 4 kg·m/s  ✓'}
+                  {'Σp = 4 kg·m/s, tetap ✓'}
                 </Label>
                 <g opacity={qMark * (1 - rv)}>
                   <Label x={1352} y={y - 40} size={26} font="serif" italic weight={600} color={C.kin} anchor="start">

@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import {BACK, EASE_IN_OUT, cyc, mix, ramp, rand, win} from '../anim';
+import {EASE_IN_OUT, mix, ramp, win} from '../anim';
 import {Arrow, Formula, Frac, Glow, Label, Motes, Note, Ripple, Stage, Sqrt, Sub, Twinkles, V} from '../components/primitives';
 import {useScene} from '../SceneContext';
 import {C, FONT} from '../theme';
@@ -12,7 +12,6 @@ import {C, FONT} from '../theme';
 //   tinggi pantulan h_n = 0,64ⁿ m (0,64; 0,41; 0,26 …), kecepatan tumbukan v_n = 0,8ⁿ·√20 m/s.
 //   Gerak mendatar tetap 0,45 m/s (jejak stroboskop seperti foto). Gerak lambat ×2,5.
 
-const fr = (x: number) => ((x % 1) + 1) % 1;
 const slot = (t: number, a: number, b: number) => Math.min(ramp(t, a, a + 0.5), 1 - ramp(t, b - 0.45, b - 0.05, EASE_IN_OUT));
 const dec = (v: number, d = 1) => v.toFixed(d).replace('.', ',');
 
@@ -53,6 +52,12 @@ const ball = (tp: number) => {
   return {h: 0, vy: 0, n: 14, since: tt + 10};
 };
 const TOTAL = T0 + (2 * V0 * E2) / (G * (1 - E2));
+/** waktu fisis dari tumbukan pertama sampai puncak pantulan ke-k */
+const peakT = (k: number) => {
+  let s = 0;
+  for (let j = 1; j < k; j++) s += (2 * V0 * E2 ** j) / G;
+  return s + (V0 * E2 ** k) / G;
+};
 
 const Steel: React.FC<{x: number; y: number; r: number; opacity?: number}> = ({x, y, r, opacity = 1}) => (
   <g opacity={opacity}>
@@ -182,7 +187,7 @@ export const Restitution: React.FC = () => {
                 </Label>
               </g>
             </g>
-            <Label x={1020} y={TY - 120} size={130} font="serif" italic color={C.gold} weight={600} opacity={q0 * 0.9}>
+            <Label x={1000} y={TY - 290} size={130} font="serif" italic color={C.gold} weight={600} opacity={q0 * 0.9}>
               e ?
             </Label>
             {/* panel kecepatan relatif */}
@@ -303,6 +308,28 @@ export const Restitution: React.FC = () => {
                 <Arrow x1={hitX + 40} y1={FL - 30} x2={hitX + 40} y2={FL - 30 - vOut * 22} color="cyan" width={5} pulse={false} />
               </g>
             </g>
+            {/* tabel tinggi puncak: tiap pantulan × 0,64 */}
+            <g opacity={ramp(t, tDrop + 0.5, tDrop + 1.2)}>
+              <rect x={1160} y={470} width={540} height={236} rx={18} fill="rgba(10,16,36,0.78)" stroke={C.gold} strokeOpacity={0.4} strokeWidth={2} />
+              <Label x={1184} y={496} size={20} color={C.muted} anchor="start" weight={600} spacing={1}>
+                tinggi puncak · tiap pantulan × 0,64
+              </Label>
+              {[1, 0.64, 0.4096, 0.262144].map((h, k) => {
+                const reached = k === 0 ? 1 : ramp(tp, T0 + peakT(k) - 0.02, T0 + peakT(k) + 0.08);
+                const y = 538 + k * 44;
+                return (
+                  <g key={k} opacity={(0.25 + 0.75 * reached) * envR}>
+                    <Label x={1184} y={y} size={22} color={C.ink} anchor="start">
+                      {k === 0 ? 'dijatuhkan' : `pantulan ${k}`}
+                    </Label>
+                    <rect x={1350} y={y - 11} width={220 * h} height={22} rx={6} fill={C.gold} opacity={0.85} />
+                    <Label x={1360 + 220 * h} y={y} size={22} font="mono" color={C.gold} weight={600} anchor="start">
+                      {`${dec(h, 2)} m`}
+                    </Label>
+                  </g>
+                );
+              })}
+            </g>
             <Label x={1700} y={FL + 32} size={18} color={C.muted} font="mono" anchor="end">
               gerak lambat ×2,5 · titik = posisi tiap 0,045 s
             </Label>
@@ -345,7 +372,7 @@ export const Restitution: React.FC = () => {
         <Sqrt>
           <Frac n="0,64" d="1,00" />
         </Sqrt>{' '}
-        = <span style={{color: answer > 0.5 ? C.ink : C.ink}}>0,8</span>
+        = 0,8
       </Formula>
       <Formula x={1340} y={340} p={k5} accent={C.gold} caption="0,64 × 0,64 m ≈ 0,41 m">
         <V>h</V>
@@ -353,9 +380,6 @@ export const Restitution: React.FC = () => {
         <sup style={{fontSize: '0.62em', verticalAlign: '0.55em', lineHeight: 0}}>2</sup>
         <V>h</V> = 0,64 <V>h</V>
       </Formula>
-      {rand(0) < 0 && cyc(0) ? <span /> : null}
-      {BACK(0) < 0 ? <span /> : null}
-      {fr(0) < 0 ? <span /> : null}
     </AbsoluteFill>
   );
 };

@@ -412,7 +412,7 @@ export const Conservation: React.FC = () => {
             );
           })()}
         </Tile>
-        <Tile cx={732} cy={575} p={tl[1]} title="ledakan" idx={1} chip="Σp = 0 → tetap 0">
+        <Tile cx={732} cy={575} p={tl[1]} title="ledakan" idx={1} chip="Σp = 0, tetap 0">
           {(() => {
             const tau = tm(1);
             const e = Math.min(1, tau / 0.3) * Math.min(1, (4.2 - tau) / 0.5);
@@ -508,7 +508,7 @@ export const Conservation: React.FC = () => {
             );
           })()}
         </Tile>
-        <Tile cx={1612} cy={575} p={tl[3]} title="partikel subatom" idx={3} chip="Σp = 0 → tetap 0">
+        <Tile cx={1612} cy={575} p={tl[3]} title="partikel subatom" idx={3} chip="Σp = 0, tetap 0">
           {(() => {
             const tau = tm(3);
             const e = Math.min(1, tau / 0.3) * Math.min(1, (4.2 - tau) / 0.5);
