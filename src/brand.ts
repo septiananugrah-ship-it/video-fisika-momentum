@@ -7,5 +7,5 @@ export const BRAND = {
   subtitle: 'Momentum & Impuls',
   course: 'Fisika Umum · S1 Kimia',
   series: 'Seri Fisika Umum · 4',
-  next: 'Seri Fisika Umum · tamat — terima kasih!',
+  next: 'Berikutnya: Osilasi',
 };
