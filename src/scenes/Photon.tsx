@@ -119,13 +119,13 @@ export const Photon: React.FC = () => {
 
   // ================= fase 3: pendinginan laser & layar surya =================
   const tau3 = Math.max(0, t - cue(5));
-  const cool = Math.exp(-0.35 * tau3);
+  const cool = Math.exp(-0.24 * tau3);
   const atoms = Array.from({length: 12}, (_, i) => {
     const A = 130 + 150 * rand(i * 3.1);
     const w = 2.0 + 1.6 * rand(i * 5.7);
     const ph = rand(i * 9.3) * Math.PI * 2;
     const x = 520 + A * cool * Math.sin(w * t + ph);
-    const v = A * cool * (w * Math.cos(w * t + ph) - 0.35 * Math.sin(w * t + ph));
+    const v = A * cool * (w * Math.cos(w * t + ph) - 0.24 * Math.sin(w * t + ph));
     const y = 520 + (rand(i * 2.3) - 0.5) * 44 + 5 * Math.sin(t * 1.3 + i);
     return {x, y, v, i};
   });
